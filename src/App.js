@@ -166,8 +166,7 @@ function App() {
   let [state, setState] = React.useState("");
   let [postCode, setPostCode] = React.useState("");
 
-
- let[err,setErr]=React.useState('')
+  let [err, setErr] = React.useState("");
 
   /**Handle variables */
 
@@ -201,39 +200,42 @@ function App() {
 
   let formRef = React.useRef();
 
-  let nextBtnRef=React.useRef()
+  let nextBtnRef = React.useRef();
 
-  const render=()=>{
-
-    if(counster==0){
-      return  <Step1
-      nameRef={nameRef}
-      lastnameRef={lastnameRef}
-      emailRef={emailRef}
-      nameChange={(e) => setName(e.target.value)}
-      lastnameChange={(e) => setLastName(e.target.value)}
-      emailChange={(e) => setEmail(e.target.value)}
-      name={name}
-      lastname={lastname}
-      email={email}
-    />
+  const render = () => {
+    if (counster == 0) {
+      return (
+        <Step1
+          nameRef={nameRef}
+          lastnameRef={lastnameRef}
+          emailRef={emailRef}
+          nameChange={(e) => setName(e.target.value)}
+          lastnameChange={(e) => setLastName(e.target.value)}
+          emailChange={(e) => setEmail(e.target.value)}
+          name={name}
+          lastname={lastname}
+          email={email}
+        />
+      );
     }
-    if(counster==1){
-      return   <Step2
-      stateRef={stateRef}
-  countyRef={countryRef}
-  postcodeRef={postcoreRef}
-      street={street}
-      county={county}
-      state={state}
-      postcode={postCode}
-      handleStreet={handleStreet}
-      handleCounty={handleCountry}
-      handleState={handleState}
-      handlePostCode={handlePostCode}
-    />
+    if (counster == 1) {
+      return (
+        <Step2
+          stateRef={stateRef}
+          countyRef={countryRef}
+          postcodeRef={postcoreRef}
+          street={street}
+          county={county}
+          state={state}
+          postcode={postCode}
+          handleStreet={handleStreet}
+          handleCounty={handleCountry}
+          handleState={handleState}
+          handlePostCode={handlePostCode}
+        />
+      );
     }
-  }
+  };
 
   useEffect(() => {
     let arr = [name, lastname, email, street, county, state, postCode];
@@ -241,53 +243,33 @@ function App() {
     if (arr.every((i) => i !== "")) {
       setShowSendButton(true);
     } else {
-      setShowSendButton(false)
+      setShowSendButton(false);
     }
-
-    
-
-
   }, [name, lastname, birth, email, street, county, state, postCode]);
 
   return (
     <div className="App w-full drop-shadow-2xl flex-col h-screen bg-purple-800 flex items-center justify-center">
-
-
-      <form onSubmit={(e)=>{
-        e.preventDefault()
-      }}
+      <form
+        onSubmit={(e) => {
+          e.preventDefault();
+        }}
         ref={formRef}
         className="min-w-[500px] flex flex-col bg-white rounded-xl  overflow-hidden py-8 px-8 min-h-[250px]"
       >
-
-
-       
         <AnimatePresence>
-        {render(counster)}
+          {render(counster)}
           <div className="flex gap-5 my-8 items-center">
-            
-            
-            
-            
-            
-            
             {counster >= 1 && (
               <button
-              
                 onClick={() => {
-                 
-                    
-                  
-                 
-                    setCounter((prev) => {
-                      if (prev === 0) {
-                        return 0;
-                      } else {
-                        return prev - 1;
-                      }
-                    });
-                  }
-                }
+                  setCounter((prev) => {
+                    if (prev === 0) {
+                      return 0;
+                    } else {
+                      return prev - 1;
+                    }
+                  });
+                }}
                 type="button"
                 className="py-2 self-start px-5 text-purple-800 broder max-w-fit border  border-purple-900 hover:bg-purple-900 hover:text-white rounded-md"
               >
@@ -297,22 +279,23 @@ function App() {
 
             {counster < 1 && (
               <button
-               ref={nextBtnRef}
+                ref={nextBtnRef}
                 onClick={() => {
-                  
-                  let arr=[name,lastname,email]
-                  let reffs=[nameRef.current,emailRef.current,lastnameRef.current]
+                  let arr = [name, lastname, email];
+                  let reffs = [
+                    nameRef.current,
+                    emailRef.current,
+                    lastnameRef.current,
+                  ];
 
-                  if(arr.some(i=>i==='')){
-                    nextBtnRef.current.style.border=`solid 1px red`;
-                    reffs.forEach((r)=>{
-                      if(r.value==''){
-                      r.style.border='solid 1px red'
+                  if (arr.some((i) => i === "")) {
+                    nextBtnRef.current.style.border = `solid 1px red`;
+                    reffs.forEach((r) => {
+                      if (r.value == "") {
+                        r.style.border = "solid 1px red";
                       }
-                    })
-                    
-                  }else{
-
+                    });
+                  } else {
                     setCounter((prev) => {
                       if (prev == 1) {
                         return 1;
@@ -321,10 +304,6 @@ function App() {
                       }
                     });
                   }
-
-                 
-
-
                 }}
                 type="button"
                 className="py-2 self-start text-purple-800  px-5 broder max-w-fit border  border-purple-900 hover:bg-purple-900 hover:text-white rounded-md"
@@ -360,7 +339,6 @@ function App() {
             )}
           </div>
         </AnimatePresence>
-       
       </form>
     </div>
   );
