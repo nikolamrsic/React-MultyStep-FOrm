@@ -327,7 +327,7 @@ function App() {
 
                 }}
                 type="button"
-                className="py-2 self-start text-purple-800  px-5 broder max-w-fit border text-black/80 border-purple-900 hover:bg-purple-900 hover:text-white text-white/70 rounded-md"
+                className="py-2 self-start text-purple-800  px-5 broder max-w-fit border  border-purple-900 hover:bg-purple-900 hover:text-white rounded-md"
               >
                 Next step
               </button>
@@ -337,7 +337,7 @@ function App() {
               <button
                 onMouseEnter={() => setHover(true)}
                 onMouseLeave={() => setHover(false)}
-                className="py-2 items-center justify-center gap-5 text-white flex bg-purple-800  px-5 broder max-w-fit border text-black/80 border-purple-900 hover:bg-purple-900 hover:text-white text-white/70 rounded-md"
+                className="py-2 items-center justify-center gap-5 text-white flex bg-purple-800  px-5 broder max-w-fit border  border-purple-900 hover:bg-purple-900 hover:text-white rounded-md"
               >
                 Send
                 <motion.svg
