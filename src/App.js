@@ -289,7 +289,7 @@ function App() {
                   }
                 }
                 type="button"
-                className="py-2 self-start px-5 text-purple-800 broder max-w-fit border text-black/80 border-purple-900 hover:bg-purple-900 hover:text-white text-white/70 rounded-md"
+                className="py-2 self-start px-5 text-purple-800 broder max-w-fit border  border-purple-900 hover:bg-purple-900 hover:text-white rounded-md"
               >
                 Prev step
               </button>
